@@ -29,7 +29,7 @@ class PQ
  
          enum { DEFAULT_SIZE = 2 }; 
  
-         void fix_heap( );
+         void fix_heap( size_type item_idx );
  
          void move_down( size_type item_idx );
  
@@ -44,22 +44,32 @@ class PQ
  
          //=== Constructors and destructor.
  
-         explicit PQ( const Compare& cmp = Compare() );
+         explicit PQ( const Compare& cmp = Compare() )
+            :m_cmp(cmp), 
+            m_capacity(DEFAULT_SIZE),
+            m_sorted(true),
+            m_length(0)
+         {
+            m_data = std::make_unique< ValueType [] >(m_capacity);
+         };
  
  
          PQ( const std::initializer_list< ValueType >& ilist, const Compare& cmp = Compare() );
  
          template< typename InputIt >
          PQ( InputIt first, InputIt last, const Compare& cmp = Compare() );
-         PQ( const PQ & );
+         PQ( const PQ & other);
  
  
          PQ & operator= ( const PQ& rhs );
 
-         virtual ~PQ();
+         virtual ~PQ()
+         {
+
+         };
  
          //=== Element access methods
-         const_reference  top( void );
+         const_reference  top( void ); 
          //=== Capacity methods
  
          bool empty( void ) const { return m_length==0; }
@@ -71,7 +81,7 @@ class PQ
  
          void clear();
 
-         void push( const_reference x );
+         void push( const_reference x ); 
 
          void pop();
 

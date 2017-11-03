@@ -39,7 +39,7 @@ int main( )
     // Sort reference array (expected output).
     std::copy( std::begin(B), std::end(B), B_sorted );
     std::sort( B_sorted, B_sorted+B_length, compare );
-    /*
+    
     //=== Unit tests start here
     {
         std::cout << ">>> Unit teste #" << ++n_unit << ": empty.\n";
@@ -49,7 +49,9 @@ int main( )
 
         assert( h.size() == 0 );
         assert( h.empty() == true );
+
         h.push(1);
+
         assert( h.empty() == false );
 
         std::cout << ">>> Passed!\n\n";
@@ -69,6 +71,7 @@ int main( )
         }
 
         std::cout << ">>> Passed!\n\n";
+        //h.print();
     }
     {
         std::cout << ">>> Unit teste #" << ++n_unit << ": insertion.\n";
@@ -81,7 +84,7 @@ int main( )
         {
             std::cout << ">>> Inserting " << e << std::endl;
             h.push( e );
-            h.print();
+            //h.print();
         }
 
         assert( h.size() == A_length );
@@ -91,6 +94,7 @@ int main( )
         while( not h.empty() )
         {
             auto x = h.top();
+          
             assert( x == A_sorted[i++] );
             h.pop();
         }
@@ -287,7 +291,7 @@ int main( )
         }
 
         std::cout << ">>> Passed!\n\n";
-    }/**/
+    }
 
     return 0;
 }
