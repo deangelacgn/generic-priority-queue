@@ -11,15 +11,15 @@ A lista de prioridade desse repositório foi implementada com uma heap e suporta
 
 ### Pré-requisitos
 
-Para utilizar esta árvore você precisa ter a versão 14 do C++ disponível no seu computador.
+Para utilizar esta fila de prioridade você precisa ter a versão 14 do C++ disponível no seu computador.
 
 ### Instalação
 
-Para utilizar a árvore rubro-negra em seus projetos basta clonar esse repositório para a sua máquina local e colocar os seus arquivos .cpp na pasta src.
+Para utilizar a fila de prioridade em seus projetos basta clonar esse repositório para a sua máquina local e colocar os seus arquivos .cpp na pasta src.
 
 ## Testes
 
-Na pasta src, você irá encontrar um arquivo drive_bst.cpp, que contém série de testes unitários. Para checar se está tudo ok execute o seguinte comando no seu terminal.
+Na pasta src, você irá encontrar um arquivo drive_pq.cpp, que contém série de testes unitários. Para checar se está tudo ok execute o seguinte comando no seu terminal.
 
 ```
 g++ -std=c++14 drive_pq.cpp -g && ./a.out
