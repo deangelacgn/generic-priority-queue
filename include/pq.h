@@ -31,8 +31,6 @@ class PQ
  
          void fix_heap( size_type item_idx );
  
-         void move_down( size_type item_idx );
- 
          void move_up( size_type item_idx );
  
          void reserve( size_type new_cap );

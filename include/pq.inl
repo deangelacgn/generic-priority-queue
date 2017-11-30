@@ -1,6 +1,5 @@
 #include "pq.h"
 
-//OK
 template < typename ValueType, typename Compare >
 void PQ< ValueType, Compare >::fix_heap( size_type item_idx )
 {
@@ -26,41 +25,7 @@ void PQ< ValueType, Compare >::fix_heap( size_type item_idx )
 
 }
 
-//OK - FUNCAO INUTIL
-template < typename ValueType, typename Compare >
-void PQ< ValueType, Compare >::move_down( size_type item_idx )
-{
 
-	// continua no loop enquanto o pai for maior do que um dos filhos
-	while(m_cmp(m_data[2 * item_idx + 1], m_data[item_idx]) || m_cmp(m_data[2 * item_idx + 2], m_data[item_idx]))
-	{
-		//compara quem eh o filho maior ou menor entre os dois(esquerda e direita)
-		if((2 * item_idx + 1) < m_length && (2 * item_idx + 2) < m_length)
-		{
-			if(m_cmp(m_data[2 * item_idx + 1], m_data[2 * item_idx + 2]))
-		  	{
-			    std::swap(m_data[item_idx], m_data[2 * item_idx + 1]);
-
-			    item_idx = 2 * item_idx + 1;
-		  	}
-		 	else
-		  	{
-			    std::swap(m_data[item_idx], m_data[2 * item_idx + 2]);
-
-			    item_idx = 2 * item_idx + 2;
-		  	}
-		}
-		else 
-		{
-			std::swap(m_data[item_idx], m_data[2 * item_idx + 1]);
-
-			item_idx = 2 * item_idx + 1;
-		}
-	}
-	  
-}
-
-//OK
 template < typename ValueType, typename Compare >
 void PQ< ValueType, Compare >::move_up( size_type item_idx )
 {
@@ -74,7 +39,7 @@ void PQ< ValueType, Compare >::move_up( size_type item_idx )
 	}
 }
 
-//OK
+
 template < typename ValueType, typename Compare >
 void PQ< ValueType, Compare >::reserve( size_type new_cap )
 {
@@ -91,7 +56,7 @@ void PQ< ValueType, Compare >::reserve( size_type new_cap )
 	m_capacity = new_cap;
 }
 
-//OK
+
 template < typename ValueType, typename Compare >
 void PQ< ValueType, Compare >::push( const_reference x )
 {
@@ -121,7 +86,7 @@ void PQ< ValueType, Compare >::push( const_reference x )
 	m_length++;
 }
 
-//OK
+
 template < typename ValueType, typename Compare >
 void PQ< ValueType, Compare >::toss( const ValueType & x )
 {
@@ -141,11 +106,10 @@ void PQ< ValueType, Compare >::toss( const ValueType & x )
 	m_length ++;
 }
 
-//OK
 template < typename ValueType, typename Compare >
 void PQ< ValueType, Compare >::pop()
 {
-	//REORDENA A HEAP ANTES DE FAZER O POP
+	//Reorganiza a heap antes de fazer o pop
 	if(m_sorted == false)
 	{
 		for(auto i = m_length/2; i > 0; i--)
@@ -160,15 +124,16 @@ void PQ< ValueType, Compare >::pop()
 
 	m_length --;
 
+	//Move o elemento que tá na raiz pra baixo, reorganizando a heap(substitui o move_down)
 	fix_heap(0);
 
 }
 
-//OK
+
 template < typename ValueType, typename Compare >
 typename PQ< ValueType, Compare >::const_reference PQ< ValueType, Compare >::top( void ) 
 { 
-	//REORDENA A HEAP ANTES DE LIBERAR O TOPO 
+	//Reorganiza a heeap antes de liberar o topo
 	if(m_sorted == false)
 	{
 		for(auto i = m_length/2; i > 0; i--)
